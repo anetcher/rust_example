@@ -1,13 +1,20 @@
 use std::env;
+mod basic;
 
 fn main() {
     let args: Vec<String> = env::args().collect();
-    println!("Hello, rust!");
+    println!("Hello, Rust!");
 
-    for argument in args {
-        match argument.as_ref() {
-            "1" => println!("One!"),
-            _ => println!("Other!")
+    if args.len() <= 1 { print_usage(); }
+
+    for i in 0..args.len() {
+        match args[i].as_ref() {
+            "fac" => println!("{}", basic::basic::fac(args[i+1].parse::<i32>().unwrap())),
+            _ => println!("")
         }
     }
+}
+
+fn print_usage() {
+    println!("Usage!");
 }
